@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<properties>
+		<property name="dialect" value="oracle" />
+	</properties>
+
+	<!-- 取得运行时SQL语句并设置到request中，key：Constant.CON_REQUEST_RUNTIME_SQL_KEY -->
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="callSettersOnNulls" value="true" /><!-- 空值设置为null -->
+	</settings>
+    
+</configuration>

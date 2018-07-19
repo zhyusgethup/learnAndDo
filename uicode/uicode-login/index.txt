@@ -1,0 +1,5 @@
+为了分解难度,先做通用和登陆;
+简易配置好spring-mvc后;依赖中有log4j 但是没有配置,spring 日志没看见
+log4j:WARN No appenders could be found for logger (org.springframework.web.context.support.StandardServletEnvironment).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
