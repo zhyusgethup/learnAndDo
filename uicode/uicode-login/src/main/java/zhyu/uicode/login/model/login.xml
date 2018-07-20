@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="login">
+    <select id="checkAccountAndPassword" parameterType="map" resultType="map" >
+      select USER_ID from SYS_USER_INFO where ACCOUNT = #{account} and
+        PASSWORD = #{password}
+    </select>
+    <select id="getUserInfoById" parameterType="java.lang.String"
+            resultType="map">
+       SELECT TOKEN, CREATED_ID ,USER_NAME FROM SYS_USER ,SYS_USER_INFO WHERE
+	    SYS_USER.USER_ID = SYS_USER_INFO.USER_ID AND SYS_USER_INFO.USER_ID =
+	    #{userId}
+    </select>
+</mapper>

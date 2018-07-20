@@ -7,11 +7,13 @@ loadCssAndJS();
 //加载通用CSS和JS
 function loadCssAndJS() {
     if(numberOfSprit > 0) {
+        importJS(jqueryPath);
         importJS(devPath);
         importJS(rsaPath);
-        importJS(jqueryPath);
     }
 }
+
+
 
 function importJS(JSfilePath) {
     var stringJSPath = "<script language='javascript' src='" + stringQianzhui + JSfilePath + "'></script>";

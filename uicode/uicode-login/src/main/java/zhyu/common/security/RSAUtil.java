@@ -186,7 +186,8 @@ public class RSAUtil {
      * @param target
      * @throws Exception
      */
-    public static void decryptionByPrivateKey(String target, String privatekey)
+    public static String decryptionByPrivateKey(String target, String
+            privatekey)
             throws
             Exception {
         PrivateKey privateKey = getPrivateKey(privatekey);
@@ -195,6 +196,7 @@ public class RSAUtil {
         cipher.update(decodeBase64(target));
         String source = new String(cipher.doFinal(), "UTF-8");
         System.out.println("私钥解密后的数据：\r\n" + source);
+        return source;
     }
 
     /**
