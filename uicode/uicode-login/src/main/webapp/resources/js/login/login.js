@@ -1,6 +1,6 @@
 /**
  * 
 */
-windows.onload = function () {
+window.onload = function () {
 
 }

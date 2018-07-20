@@ -9,6 +9,7 @@ function loadCssAndJS() {
     if(numberOfSprit > 0) {
         importJS(devPath);
         importJS(rsaPath);
+        importJS(jqueryPath);
     }
 }
 
