@@ -17,6 +17,7 @@ package zhyu.common.objectUtils;
  */
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * Utility class for managing arrays.
@@ -149,4 +150,10 @@ public class ArrayUtil {
 
 		return oneDimensionArray;
 	}
+	public static void main(String[] args) {
+		String[] strs = new String[]{"123",null,"213",null};
+		String[] ss = safeOneDimensionArray(strs);
+		System.out.println(Arrays.toString(ss));
+	}
+
 }

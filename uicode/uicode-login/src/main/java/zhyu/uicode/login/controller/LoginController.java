@@ -11,10 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import zhyu.common.security.BaseController;
 import zhyu.common.vo.Result;
 
@@ -22,9 +19,8 @@ import zhyu.common.vo.Result;
 @Controller()
 public class LoginController extends BaseController {
 
-    @Autowired
     @RequestMapping(value = "/loginWithRSA", method = RequestMethod.POST)
-    public Result loginWithRSA(String username, String password, HttpSession
+    public Result loginWithRSA(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession
             session) throws Exception{
         username = decode(username);
         password = decode(password);

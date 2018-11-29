@@ -15,6 +15,7 @@ public class CommonExceptionResolver implements HandlerExceptionResolver {
         String message = null;
         //判断是否为系统自定义异常。
         System.out.println("hello CER");
+        System.out.println(e);
         if(e instanceof CommonServiceException) {
             ModelAndView mv = new ModelAndView();
 //            response.setStatus(HttpStatus.OK.value()); //设置状态码

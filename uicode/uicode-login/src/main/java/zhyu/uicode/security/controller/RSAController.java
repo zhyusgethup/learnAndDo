@@ -1,5 +1,6 @@
 package zhyu.uicode.security.controller;
 
+import org.apache.http.HttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +25,7 @@ public class RSAController {
 
     @RequestMapping(value ="/getPublicKey", method = RequestMethod.GET)
     @ResponseBody
-    public Result getPublicKey(HttpSession session) throws Exception{
+    public Result getPublicKey(HttpSession session, HttpResponse resp) throws Exception{
         RSAUtil.Keys keys = null;
         Map<String,Object> result = new HashMap<>();
         keys = RSAUtil.generatorKeyPair();
@@ -34,6 +35,7 @@ public class RSAController {
         String describle = "privateKey 用于接收信息,publicKey用于发送信息";
         result.put("msg",describle);
         result.put("publicKey",pub1);
+        resp.setHeader("Access-Control-Allow-Origin", "*");
         return Result.getSuccessResult(result);
     }
 
