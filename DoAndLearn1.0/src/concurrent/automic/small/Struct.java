@@ -1,6 +1,8 @@
 package concurrent.automic.small;
 
-import java.util.concurrent.ConcurrentHashMap;
+import gener.tempP.in.In;
+
+import java.util.concurrent.*;
 
 public class Struct {
         public static void main(String[] args) throws InterruptedException {
@@ -33,8 +35,23 @@ public class Struct {
                     });
                 }
             };
-            thread2.start();
+           /* thread2.start();
             Thread.sleep(1000);
-            thread1.start();
+            thread1.start();*/
+            ExecutorService pool = Executors.newFixedThreadPool(1);
+           Future<Integer> re =  pool.submit(new A());
+           try {
+               if (re.get() != null) {
+                   System.out.println(re.get());
+               }
+           }catch (Exception e){}
+    }
+    static class A implements Callable<Integer> {
+        @Override
+        public Integer call() throws Exception {
+            System.out.println("enter");
+            Thread.sleep(3000);
+            return 1;
+        }
     }
 }

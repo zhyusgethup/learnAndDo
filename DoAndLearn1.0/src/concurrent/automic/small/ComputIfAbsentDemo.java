@@ -48,6 +48,7 @@ public class ComputIfAbsentDemo {
             gvo.rights.put(10008,101);
             final Rest cou = new Rest();
             reqCache.forEach((k, v) -> {
+                //引用cou来存储 vo,并让两任务同时开启
                 if (v.gid == g1) {
                     cou.count++;
                     if(cou.reqs[0] == null){
@@ -57,8 +58,8 @@ public class ComputIfAbsentDemo {
                     }
                 }
                 if(cou.count == 2) {
-                    fixedThreadPool.submit(new ConJoinTask(cou.reqs[0]));
-                    fixedThreadPool.submit(new Con2JoinTask(cou.reqs[1]));
+                    Future<Boolean> res1= fixedThreadPool.submit(new ConJoinTask(cou.reqs[0]));
+                    Future<Boolean> res2 = fixedThreadPool.submit(new Con2JoinTask(cou.reqs[1]));
                     cou.reqs[0] = null;
                     cou.reqs[1] = null;
                 }
@@ -66,10 +67,11 @@ public class ComputIfAbsentDemo {
             fixedThreadPool.shutdown();
             fixedThreadPool.awaitTermination(1, TimeUnit.HOURS);
             result.forEach(x -> {
-                System.out.print(x.rights.size() + " ");
-                re.count = rights.size();
+                re.count = x.rights.size();
+                System.out.println(x.rights.size() + " ");
             });
         }
+        System.exit(0);
 
     }
     private static void showGuild(GuildVo gvo) {
