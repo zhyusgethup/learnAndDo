@@ -20,7 +20,7 @@ public class ComputIfAbsentDemo {
 
     static class Rest {
         int count;
-        Req[] reqs = new Req[2];
+        List<Req> reqs = new CopyOnWriteArrayList<ComputIfAbsentDemo.Req>();
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -37,31 +37,18 @@ public class ComputIfAbsentDemo {
             Integer randomKey = keys[random.nextInt(keys.length)];
             GuildVo gvo = guildCache.get(randomKey);
             final int g1 = gvo.guildId;
-            gvo.rights.put(10000,101);
-            gvo.rights.put(10001,101);
-            gvo.rights.put(10002,101);
-            gvo.rights.put(10003,101);
-            gvo.rights.put(10004,101);
-            gvo.rights.put(10005,101);
-            gvo.rights.put(10006,101);
-            gvo.rights.put(10007,101);
-            gvo.rights.put(10008,101);
+//            fillRights(gvo);
             final Rest cou = new Rest();
             reqCache.forEach((k, v) -> {
                 //引用cou来存储 vo,并让两任务同时开启
-                if (v.gid == g1) {
-                    cou.count++;
-                    if(cou.reqs[0] == null){
-                        cou.reqs[0] = v;
-                    }else {
-                        cou.reqs[1] = v;
-                    }
+                if (v.gid == g1 && cou.reqs.size() < 10) {
+                   cou.reqs.add(v);
                 }
-                if(cou.count == 2) {
-                    Future<Boolean> res1= fixedThreadPool.submit(new ConJoinTask(cou.reqs[0]));
-                    Future<Boolean> res2 = fixedThreadPool.submit(new Con2JoinTask(cou.reqs[1]));
-                    cou.reqs[0] = null;
-                    cou.reqs[1] = null;
+                if(cou.reqs.size() == 10) {
+                    cou.reqs.forEach( x -> {
+                    	fixedThreadPool.submit(new ConJoinTask(x));
+                    });
+                    cou.reqs.clear();
                 }
             });
             fixedThreadPool.shutdown();
@@ -74,6 +61,17 @@ public class ComputIfAbsentDemo {
         System.exit(0);
 
     }
+	private static void fillRights(GuildVo gvo) {
+		gvo.rights.put(10000,101);
+		gvo.rights.put(10001,101);
+		gvo.rights.put(10002,101);
+		gvo.rights.put(10003,101);
+		gvo.rights.put(10004,101);
+		gvo.rights.put(10005,101);
+		gvo.rights.put(10006,101);
+		gvo.rights.put(10007,101);
+		gvo.rights.put(10008,101);
+	}
     private static void showGuild(GuildVo gvo) {
         Map<Integer, Integer> rights = gvo.rights;
         int gid = gvo.guildId;
@@ -347,69 +345,8 @@ public class ComputIfAbsentDemo {
 
         }
 
-    } static class Con2JoinTask implements Callable<Boolean> {
-        private Req req;
-
-        public Con2JoinTask(Req req) {
-            this.req = req;
-        }
-
-        private void updateMemVoIfNullCreate(MemVo vo, int pid, int gid) {
-            if (null == vo) {
-                vo = new MemVo(gid, pid);
-            } else {
-                vo.guildId = gid;
-            }
-        }
-
-        private void updatePvoIfNullCache(int pid, int gid) {
-            PVo pvo = playerCache.get(pid);
-            if (null == pvo)
-                pvo = dao.get(pid);
-            pvo.guildId = gid;
-            //这里应该追加playerInfo的信息更改
-        }
-
-        @Override
-        public Boolean call() {
-            int pid = req.pid;
-            int gid = req.gid;
-            System.out.println("发现了申请 req[p" + pid + " ,g" + gid + "]");
-            PVo pVo = playerCache.get(pid);
-            if (pVo == null || pVo.guildId != -1) {
-                throw new RuntimeException("没有该玩家或者已加入公会");
-            }
-            GuildVo gvo = guildCache.get(gid);
-            if (null == gvo) throw new RuntimeException("公会数据异常");
-            Map<Integer, Integer> rights = gvo.rights;
-            if (rights.size() >= 10)
-                throw new RuntimeException("公会" + gvo.guildId + "已满");
-            if (req.updater.compareAndSet(req, Req.NOR, Req.ACCEPT)) {
-                if (gvo.rights.size() >= 10)
-                    throw new RuntimeException("公会" + gvo.guildId + "已满");
-                try {
-                    Thread.sleep(500);
-                }catch (Exception e){}
-                MemVo mvo = memCache.get(req.pid);
-                updateMemVoIfNullCreate(mvo, pid, gid);//这里没在做memvo中gid的验证
-                reqCache.remove(req);
-                Thread.yield();
-                rights.put(pid, 101);
-                updatePvoIfNullCache(pid, gid);
-                System.out.println("申请成功  req[p" + pid + " ,g" + gid + "]");
-                result.add(gvo);
-                return true;
-            } else {
-                if (req.updater.compareAndSet(req, Req.NOR, Req.REFUSE)) {
-                    reqCache.remove(req);
-                    System.out.println("被拒绝  req[p" + pid + " ,g" + gid + "]");
-                }
-                return false;
-            }
-
-        }
-
-    }
+    } 
+    
     static class DangerJoinTask implements Runnable {
         @Override
         public void run() {
