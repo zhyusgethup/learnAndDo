@@ -1,4 +1,4 @@
-package nettyLearn.basic;
+package nettyLearn.basic.demo.echo;
 
 import java.net.InetSocketAddress;
 
