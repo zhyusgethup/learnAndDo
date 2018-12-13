@@ -7,6 +7,7 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.ServerSocketChannel;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
@@ -34,6 +35,7 @@ public class EchoServer {
 					@Override
 					protected void initChannel(SocketChannel ch) throws Exception {
 						ch.pipeline().addLast(serverHandler);
+						System.out.println(ch.pipeline().names());
 					}
 					
 				});
