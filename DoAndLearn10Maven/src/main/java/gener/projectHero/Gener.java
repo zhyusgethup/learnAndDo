@@ -15,7 +15,7 @@ import javax.security.auth.x500.X500Principal;
 import gener.projectHero.Vo.Param;
 
 public class Gener {
-	// public static final int Guild_Create = ModuleID.Guild + 1; // ´´½¨¾üÍÅ
+	// public static final int Guild_Create = ModuleID.Guild + 1; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	/**
 	 * case "join": sendMessage(connection,120002,getDataMap(new
@@ -46,23 +46,23 @@ public class Gener {
 			}
 		}
 		vos.forEach(x -> System.out.println("name = " + x.getMessage()   + " id: " + x.getId() + "  param:" + x.getParams()));
-//		StringBuilder cA = getCaseA(vos);
-//		System.out.println(cA);
-//		StringBuilder cB = getCaseB(vos);
-//		System.out.println(cB);
+		StringBuilder cA = getCaseA(vos);
+		System.out.println(cA);
+		StringBuilder cB = getCaseB(vos);
+		System.out.println(cB);
 	}
 	private static StringBuilder getCaseB(List<Vo> vos) {
 		StringBuilder sb = new StringBuilder();
 		for (Vo vo : vos) {
 			String pp = caseB;
 			pp = pp.replace("##1", vo.getId() + "");
-			pp = pp.replace("##2", vo.getMessage() + "³É¹¦");
+			pp = pp.replace("##2", vo.getMessage() + "ï¿½É¹ï¿½");
 			sb.append(pp);
 		}
 		return sb;
 	}
 
-	// Ê××ÖÄ¸×ªÐ¡Ð´
+	// ï¿½ï¿½ï¿½ï¿½Ä¸×ªÐ¡Ð´
 	public static String toLowerCaseFirstOne(String s) {
 		if (Character.isLowerCase(s.charAt(0)))
 			return s;
@@ -150,7 +150,7 @@ public class Gener {
 	}
 
 	private static Map<String, List<Param>> parseMethod() {
-		String name = "E:\\git repository\\DoAndLearn1.0\\bin\\gener\\method.txt";
+		String name = "E:\\git repository\\DoAndLearn1.0\\bin\\gener\\projectHero\\method.txt";
 		StringBuilder sb = new StringBuilder();
 		BufferedReader br = null;
 		try {
@@ -191,8 +191,8 @@ public class Gener {
 	}
 
 	private static List<Vo> parseCommand() {
-		String name = "E:\\git repository\\DoAndLearn1.0\\bin\\gener\\command.txt";
-		System.out.println(name);
+		String name = "E:\\git repository\\DoAndLearn1.0\\bin\\gener\\projectHero\\command.txt";
+//		System.out.println(name);
 		List<String> commandList = new ArrayList<>();
 		BufferedReader br = null;
 		try {
