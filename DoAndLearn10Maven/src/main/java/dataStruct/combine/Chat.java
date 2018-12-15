@@ -19,7 +19,11 @@ public class Chat {
     }
 
     public void appendMsgToNearList(int pid) {
-
+    	
+    }
+    
+    public void build() {
+    	ChatMsgVo vo = new ChatMsgVo();
     }
 }
 class Player {
@@ -35,7 +39,10 @@ class Cache {
     private Map<Integer,List<Integer>> cacheOutLineIndex; //单向离线消息缓存
 }
 class ChatMsgVo {
-    private int sender,receiver;private long cre;private  String msg;
+    private int sender,receiver;
+    private long cre;
+    private  String msg;
+    private int state;// 0 正常消息 已读  1.离线消息
 }
 class ChatVo {
     private  List<ChatMsgVo> list;
