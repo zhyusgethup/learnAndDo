@@ -10,8 +10,14 @@ import java.nio.charset.Charset;
 public class TextAnalyse {
 
 	public static void main(String[] args) {
+		System.out.println((int)"\r".charAt(0));
+//		StringBuilder sBuilder = getWordsFromFileAndAnalyseCharset();
+	}
+
+	public static StringBuilder getWordsFromFileAndAnalyseCharset() {
 		String path = TextAnalyse.class.getResource("../srcFiles/").getPath();
 		File file = new File(path + "暴恐词库.txt");
+		StringBuilder sb = new StringBuilder();
 		if(file.exists()) {
 			FileInputStream fis = null;
 			BufferedInputStream bis = null;
@@ -24,8 +30,8 @@ public class TextAnalyse {
 				System.out.println(bis.available());
 				byte[] bytes = new byte[bis.available()];
 				int pos = bis.read(bytes);
-				String string = new String(bytes,Charset.forName(charset));
-				System.out.println(string);
+				sb.append(new String(bytes,Charset.forName(charset)));
+				System.out.println(sb.toString());
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -40,6 +46,7 @@ public class TextAnalyse {
 				}
 			}
 		}
+		return sb;
 	}
 	
 	private static String analyseCharset(BufferedInputStream bis) throws IOException {
