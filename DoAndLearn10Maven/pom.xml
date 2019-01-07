@@ -6,6 +6,16 @@
     <groupId>DoAndLearn1.0Maven</groupId>
     <artifactId>DoAndLearn1.0Maven</artifactId>
     <version>1.0-SNAPSHOT</version>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
     <dependencies>
         <dependency>
             <groupId>io.netty</groupId>

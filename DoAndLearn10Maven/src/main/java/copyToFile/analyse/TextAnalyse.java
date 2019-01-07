@@ -10,13 +10,24 @@ import java.nio.charset.Charset;
 public class TextAnalyse {
 
 	public static void main(String[] args) {
-		System.out.println((int)"\r".charAt(0));
-//		StringBuilder sBuilder = getWordsFromFileAndAnalyseCharset();
+		String src = "../srcFiles/";
+//		String src = "../";
+//		System.out.println(TextAnalyse.class.getResource(src));
+		String path = TextAnalyse.class.getResource(src).getPath();
+//		System.out.println(path);
+//		File s = new File(path);
+//		System.out.println(s.exists());
+//		System.out.println(s.isDirectory());
+//		File[] files = s.listFiles();
+//		for (int i = 0; i < files.length; i++) {
+//			System.out.println(files[i].getName());
+//		}
+		File file = new File(path + "暴恐词库.txt");
+		StringBuilder sBuilder = getWordsFromFileAndAnalyseCharset(file);
+		System.out.println(sBuilder.toString());
 	}
 
-	public static StringBuilder getWordsFromFileAndAnalyseCharset() {
-		String path = TextAnalyse.class.getResource("../srcFiles/").getPath();
-		File file = new File(path + "暴恐词库.txt");
+	public static StringBuilder getWordsFromFileAndAnalyseCharset(File file) {
 		StringBuilder sb = new StringBuilder();
 		if(file.exists()) {
 			FileInputStream fis = null;
@@ -31,7 +42,7 @@ public class TextAnalyse {
 				byte[] bytes = new byte[bis.available()];
 				int pos = bis.read(bytes);
 				sb.append(new String(bytes,Charset.forName(charset)));
-				System.out.println(sb.toString());
+//				System.out.println(sb.toString());
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
