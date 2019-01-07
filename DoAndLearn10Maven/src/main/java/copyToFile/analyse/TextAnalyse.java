@@ -1,16 +1,12 @@
 package copyToFile.analyse;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.Charset;
 
 public class TextAnalyse {
 
 	public static void main(String[] args) {
-		String src = "../srcFiles/";
+		String src = "../srcFiles";
 //		String src = "../";
 //		System.out.println(TextAnalyse.class.getResource(src));
 		String path = TextAnalyse.class.getResource(src).getPath();
@@ -22,9 +18,22 @@ public class TextAnalyse {
 //		for (int i = 0; i < files.length; i++) {
 //			System.out.println(files[i].getName());
 //		}
-		File file = new File(path + "暴恐词库.txt");
-		StringBuilder sBuilder = getWordsFromFileAndAnalyseCharset(file);
-		System.out.println(sBuilder.toString());
+		File parent = new File(path);
+		StringBuilder sb = new StringBuilder();
+		if(null != parent && parent.exists() && parent.isDirectory()) {
+			String[] fileNames = parent.list(new FilenameFilter() {
+				@Override
+				public boolean accept(File dir, String name) {
+					return !name.endsWith(".xlsx");
+				}
+			});
+			for (int i = 0; i < fileNames.length; i++) {
+				System.out.println(fileNames[i]);
+				StringBuilder sBuilder = getWordsFromFileAndAnalyseCharset(new File(path + File.separator + fileNames[i]));
+				sb.append(sBuilder);
+			}
+		}
+		System.out.println(sb.toString());
 	}
 
 	public static StringBuilder getWordsFromFileAndAnalyseCharset(File file) {
