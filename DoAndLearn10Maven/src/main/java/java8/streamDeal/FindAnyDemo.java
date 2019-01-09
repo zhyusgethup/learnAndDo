@@ -1,4 +1,4 @@
-package streamDeal;
+package java8.streamDeal;
 
 import java.util.Collections;
 import java.util.HashMap;
