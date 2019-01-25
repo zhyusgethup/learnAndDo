@@ -192,6 +192,7 @@
 
         <logger name="OPLog" level="INFO" additivity="false" includeLocation="false">
             <appender-ref ref="OPLogRewrite"/>
+            <appender-ref ref="Console"/>
         </logger>
         <logger name="fightLog" level="ERROR" additivity="false" includeLocation="false">
             <appender-ref ref="FightLogRewrite"/>
