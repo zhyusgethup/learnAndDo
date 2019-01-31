@@ -14,6 +14,9 @@ public class TimeClock0 {
 	
 	public static void main(String[] args) {
 //		testStringOrIntCompute();
+		long clock = getBeforeHourClock();
+		long c2 = clock - 1000 * 60 * 60;
+		System.out.printf("前%d和后%d",c2,clock);
 	}
 
 	private static void testStringOrIntCompute() {
@@ -61,7 +64,14 @@ public class TimeClock0 {
 			System.out.println("ok");
 		}
 	}
-
+	
+	public static long getBeforeHourClock() {
+		LocalDateTime current = LocalDateTime.now();
+		LocalDateTime l1 = LocalDateTime.of(current.getYear(),current.getMonth(),current.getDayOfMonth(),current.getHour()
+				,0,0);
+		return l1.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+	}
+	
 	public static long getClock0NextDay() {
 		LocalDateTime current = LocalDateTime.of(LocalDate.now().minus(-1,ChronoUnit.DAYS),LocalTime.MIN);
         return current.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
