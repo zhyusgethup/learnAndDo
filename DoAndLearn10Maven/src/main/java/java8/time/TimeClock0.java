@@ -7,6 +7,7 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -17,7 +18,9 @@ public class TimeClock0 {
 //		long clock = getBeforeHourClock();
 //		long c2 = clock - 1000 * 60 * 60;
 //		System.out.printf("前%d和后%d", c2, clock);
-		System.out.println(getEndMonthClock());
+//		System.out.println(getEndMonthClock());
+		 long nextDayClock = getNextDayClock(6);
+		 System.out.println(nextDayClock);
 	}
 
 	public static long getEndMonthClock() {
@@ -84,7 +87,20 @@ public class TimeClock0 {
 		LocalDateTime current = LocalDateTime.of(LocalDate.now().minus(-1, ChronoUnit.DAYS), LocalTime.MIN);
 		return current.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
 	}
+	public static long getNextDayClock(int clock) {
+	        LocalDateTime l1 = LocalDateTime.of(LocalDate.now().minus(-1, ChronoUnit.DAYS), LocalTime.of(clock, 0));
+	        return l1.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+	}
 
+	public static long get0HourOfToday() {
+
+		long now = System.currentTimeMillis();
+		long daySecond = 60 * 60 * 24 * 1000L;
+		long dayTime = now - (now) % daySecond;
+		System.out.println(new Date(dayTime));
+		return dayTime;
+	}
+	
 	public static long getClock0NextMonth() {
 		LocalDateTime current = LocalDateTime
 				.of(LocalDate.now().minus(-1, ChronoUnit.MONTHS).minus(-1, ChronoUnit.DAYS), LocalTime.MIN);

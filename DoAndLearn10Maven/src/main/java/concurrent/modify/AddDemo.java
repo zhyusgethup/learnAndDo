@@ -14,10 +14,6 @@ public class AddDemo {
 	public static void main(String[] args) {
 		final Map<Integer, Object> data = new ConcurrentHashMap<>();
 		Map<String, Object> info = new HashMap<>();
-		info.put("str", 1);
-		info.put("str1", 2);
-		info.put("str2", 3);
-		info.put("str3", 4);
 //		data.put("info", info);
 		ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5000);
 		for (int i = 0; i < 20; i++) {
@@ -42,7 +38,7 @@ public class AddDemo {
 	                Integer key = current.getKey();
 	                Object value = current.getValue();
 	                if(key % 2 == 0)
-	                	i$.remove();
+	                	data.remove(key);
 	                System.out.println("key " + key +"   value =" + value);
 	            }
 

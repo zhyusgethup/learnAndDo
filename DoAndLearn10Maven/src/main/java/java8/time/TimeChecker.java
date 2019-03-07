@@ -2,6 +2,7 @@ package java8.time;
 
 import java.time.Clock;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -15,14 +16,15 @@ import java.util.Date;
 public class TimeChecker {
 
 	public static void main(String[] args) {
-		long lastFreshTime = 1546012800000L;
+//		long lastFreshTime = 1546012800000L;
 		// long lastFreshTime = 1545926399000L;// 昨晚 11点59 compareTo = 1;
 		// long lastFreshTime = 1545926400000L;//今天凌晨 compareTo = 0;
 		// int[] refreshTime = new int[]{12};
 		// System.out.println(checkRefreshTime(lastFreshTime, refreshTime));
-		System.out.println((checkRefreshTime(System.currentTimeMillis() - 1000 * 3600 * 48,0 )));
+//		System.out.println((checkRefreshTime(System.currentTimeMillis() - 1000 * 3600 * 48,0 )));
 //		System.out.println((checkRefreshTime(System.currentTimeMillis(),0
 //			)));
+		System.out.println(isToday(1551214800000L));
 	}
 
 	private static long checkRefreshTime(long lastRefreshTime, int refreshTime) {
@@ -76,14 +78,11 @@ public class TimeChecker {
 		return 0;
 	}
 
-	public static long get0HourOfToday() {
-
-		long now = System.currentTimeMillis();
-		long daySecond = 60 * 60 * 24 * 1000L;
-		long dayTime = now - (now) % daySecond;
-		System.out.println(new Date(dayTime));
-		return dayTime;
-	}
+		public static boolean isToday(long time){
+			LocalDate now = LocalDate.now();
+			LocalDateTime t = LocalDateTime.ofInstant(Instant.ofEpochMilli(time), ZoneId.systemDefault());
+			return t.toLocalDate().compareTo(now) == 0;
+		}
 
 	/**
 	 * 检测是否达到刷新时间
