@@ -14,6 +14,7 @@ import arithmetic.sort.sortAndCat.GroupBy.VO;
 public class SmallFind {
 	private static Random r = new Random();
 	public static void main(String[] args) {
+
 		findInList();
 	}
 	public static void findInList() {
