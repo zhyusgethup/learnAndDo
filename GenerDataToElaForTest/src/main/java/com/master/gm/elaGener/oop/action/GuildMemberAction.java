@@ -10,23 +10,22 @@ import java.util.Map;
 public class GuildMemberAction extends Action{
 //gMemCount
     public GuildMemberAction(Adjust adjust) {
-        super(adjust);
         log = new GuildMemeberLog();
         name = "公会成员";
     }
-    public  static class  StaGuildMemberAdjustor implements Adjust{
-        private int gMemCount;
-        public StaGuildMemberAdjustor(int gMemCount) {
-            this.gMemCount = gMemCount;
-        }
-        @Override
-        public void adjust(User user, Server server, Map<String, Object> params) {
-            CommonActionUtil.loginCheckIsWrong(user,server);
-            ActionParamType.GUILD_G_M_COUNT.val(gMemCount);
-            params.put("gMemCount",gMemCount);
-
-        }
-    }
+//    public  static class  StaGuildMemberAdjustor implements Adjust{
+//        private int gMemCount;
+//        public StaGuildMemberAdjustor(int gMemCount) {
+//            this.gMemCount = gMemCount;
+//        }
+//        @Override
+//        public void adjust(User user, Server server, Map<String, Object> params) {
+//            CommonActionUtil.loginCheckIsWrong(user,server);
+//            ActionParamType.GUILD_G_M_COUNT.val(gMemCount);
+//            params.put("gMemCount",gMemCount);
+//
+//        }
+//    }
 
     @Override
     public void gener(User user, Server server) {

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>火焰纹章管理系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins -->
+    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <!-- DataTables Buttons -->
+    <link rel="stylesheet" type="text/css" href="../bower_components/datatables.net/css/jquery.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="../bower_components/datatables.net/css/buttons.dataTables.css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../dist/js/html5shiv.min.js"></script>
+    <script src="../dist/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+
+        <!-- Logo -->
+        <a href="http://huyusoft.com/" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>H</b>G</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Huyu</b>Game</span>
+        </a>
+
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="../dist/img/user3-128x128.jpg" class="user-image" alt="User Image">
+                            <span class="hidden-xs">Huyu</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+
+                                <p>
+                                    Huyu - Game
+                                    <small>2019年3月</small>
+                                </p>
+                            </li>
+                            <!-- Menu Body -->
+                            <li class="user-body">
+                                <div class="row">
+                                    <div class="col-xs-4 text-center">
+                                        <a href="http://huyusoft.com/">官网</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">信息</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">反馈</a>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a onclick="if(!confirm('提示：确定要返回管理平台吗？')) return false;"
+                                       href="http://127.0.0.1:8080/platform" class="btn btn-default btn-flat">返回管理平台</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a onclick="if(!confirm('提示：确定要注销吗？')) return false;"
+                                       href="http://127.0.0.1:8080/platform" class="btn btn-default btn-flat">登出</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Control Sidebar Toggle Button -->
+                    <li>
+                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">导航栏</li>
+                <!-- Optionally, you can add icons to the links -->
+                <li><a href="index.html"><i class="fa fa-dashboard"></i> <span>火焰纹章</span></a></li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-table"></i>
+                        <span>统计表格</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="comprehensiveData.html"><i class="fa fa-circle-o"></i>
+                            <span>综合数据</span></a></li>
+                        <li><a href="totalData.html"><i class="fa fa-circle-o"></i> <span>总计数据</span></a></li>
+                        <li><a href="userRentention.html"><i class="fa fa-circle-o"></i> <span>用户留存</span></a></li>
+                        <li><a href="online.html"><i class="fa fa-circle-o"></i> <span>在线时长</span></a></li>
+                        <li><a href="playerGuide.html"><i class="fa fa-circle-o"></i> <span>新手引导流失</span></a></li>
+                        <li><a href="userLose.html"><i class="fa fa-circle-o"></i> <span>用户流失</span></a></li>
+                        <li><a href="userJoin.html"><i class="fa fa-circle-o"></i> <span>用户参与</span></a></li>
+                        <li><a href="roleGrow.html"><i class="fa fa-circle-o"></i> <span>角色养成</span></a></li>
+                        <li><a href="guildAct.html"><i class="fa fa-circle-o"></i> <span>公会活跃</span></a></li>
+                        <li><a href="goodsCost.html"><i class="fa fa-circle-o"></i> <span>道具消耗</span></a></li>
+                        <li><a href="allRentention.html"><i class="fa fa-circle-o"></i> <span>全服留存</span></a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-pie-chart"></i>
+                        <span>统计图表</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="testChart.html"><i class="fa fa-circle-o"></i> <span>测试图表</span></a></li>
+                    </ul>
+                </li>
+                <li><a href="fileManager.html"><i class="fa fa-folder"></i> <span>测试上传</span></a></li>
+                <li class="active treeview menu-open">
+                    <a href="#">
+                        <i class="fa fa-sellsy"></i>
+                        <span>GM管理</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="userManager.html"><i class="fa fa-circle-o"></i> <span>用户管理</span></a></li>
+                        <li class="active"><a href="userManager2.html"><i class="fa fa-circle-o"></i> <span>用户管理2</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header" id="page-header">
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">用户踢出</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form id="user-tick-form" method="get">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="tick-inputId" class="col-sm-2 control-label"
+                                           style="text-align: right">ID</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="tick-inputId" placeholder="ID">
+                                    </div>
+
+                                    <label for="ban-inputDate1" class="col-sm-2 control-label"
+                                           style="text-align: right">起止日期</label>
+                                    <div class="col-sm-2">
+                                        <input type="date" class="form-control" id="tick-inputDate1" placeholder="Name">
+                                    </div>
+                                    <label for="ban-inputDate2" class="col-sm-1 control-label"
+                                           style="width: 40px; text-align: center">至</label>
+                                    <div class="col-sm-2">
+                                        <input type="date" class="form-control" id="tick-inputDate2" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ban-inputName" class="col-sm-2 control-label"
+                                           style="text-align: right">玩家名</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="tick-inputName" placeholder="Date">
+                                    </div>
+
+                                    <label for="ban-inputOther" class="col-sm-2 control-label"
+                                           style="text-align: right">其他</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="tick-inputOther"
+                                               placeholder="Other">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="btn-group pull-right" style="margin-right: 50%">
+                                    <button type="reset" class="btn btn-warning" style="width: 80px">重置</button>
+                                    <button type="submit" class="btn btn-info" style="width: 80px">踢出</button>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">用户封禁</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form id="user-ban-form" method="get">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="ban-inputId" class="col-sm-2 control-label"
+                                           style="text-align: right">ID</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="ban-inputId" placeholder="ID">
+                                    </div>
+
+                                    <label for="ban-inputDate1" class="col-sm-2 control-label"
+                                           style="text-align: right">起止日期</label>
+                                    <div class="col-sm-2">
+                                        <input type="date" class="form-control" id="ban-inputDate1" placeholder="Name">
+                                    </div>
+                                    <label for="ban-inputDate2" class="col-sm-1 control-label"
+                                           style="width: 40px; text-align: center">至</label>
+                                    <div class="col-sm-2">
+                                        <input type="date" class="form-control" id="ban-inputDate2" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ban-inputName" class="col-sm-2 control-label"
+                                           style="text-align: right">玩家名</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="ban-inputName" placeholder="Date">
+                                    </div>
+
+                                    <label for="ban-inputOther" class="col-sm-2 control-label"
+                                           style="text-align: right">其他</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="ban-inputOther" placeholder="Other">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="btn-group pull-right" style="margin-right: 50%">
+                                    <button type="reset" class="btn btn-warning" style="width: 80px">重置</button>
+                                    <button type="submit" class="btn btn-info" style="width: 80px">封禁</button>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">发送邮件</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form id="user-send-form" method="get">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="send-inputId" class="col-sm-2 control-label"
+                                           style="text-align: right">ID</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="send-inputId" placeholder="ID">
+                                    </div>
+
+                                    <label for="send-inputDate1" class="col-sm-2 control-label"
+                                           style="text-align: right">起止日期</label>
+                                    <div class="col-sm-2">
+                                        <input type="date" class="form-control" id="send-inputDate1" placeholder="Name">
+                                    </div>
+                                    <label for="send-inputDate2" class="col-sm-1 control-label"
+                                           style="width: 40px; text-align: center">至</label>
+                                    <div class="col-sm-2">
+                                        <input type="date" class="form-control" id="send-inputDate2" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="send-inputName" class="col-sm-2 control-label"
+                                           style="text-align: right">玩家名</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="send-inputName" placeholder="Date">
+                                    </div>
+
+                                    <label for="send-inputOther" class="col-sm-2 control-label"
+                                           style="text-align: right">其他</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="send-inputOther" placeholder="Other">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <div class="btn-group pull-right" style="margin-right: 50%">
+                                    <button type="reset" class="btn btn-warning" style="width: 80px">重置</button>
+                                    <button type="submit" class="btn btn-info" style="width: 80px">发送</button>
+                                </div>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+            <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- Home tab content -->
+            <div class="tab-pane" id="control-sidebar-home-tab">
+                <h3 class="control-sidebar-heading">最新活动</h3>
+                <ul class="control-sidebar-menu">
+                    <h5 align="center">暂未开放</h5>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+                <h3 class="control-sidebar-heading">任务进度</h3>
+                <ul class="control-sidebar-menu">
+                    <h5 align="center">暂未开放</h5>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+            </div>
+            <!-- /.tab-pane -->
+            <!-- Stats tab content -->
+            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+            <!-- /.tab-pane -->
+            <!-- Settings tab content -->
+            <div class="tab-pane" id="control-sidebar-settings-tab">
+                <form method="post">
+                    <h3 class="control-sidebar-heading">常规设置</h3>
+                    <h5 align="center">暂未开放</h5>
+                </form>
+            </div>
+            <!-- /.tab-pane -->
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+    <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->`
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- DataTables Buttons -->
+<script type="text/javascript" src="../bower_components/ajax/js/jszip.js"></script>
+<script type="text/javascript" src="../bower_components/ajax/js/vfs_fonts.js"></script>
+<script type="text/javascript" src="../bower_components/ajax/js/pdfmake.js"></script>
+<script type="text/javascript" src="../bower_components/datatables.net/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../bower_components/datatables.net/js/dataTables.buttons.js"></script>
+<script type="text/javascript" src="../bower_components/datatables.net/js/buttons.flash.js"></script>
+<script type="text/javascript" src="../bower_components/datatables.net/js/buttons.html5.js"></script>
+<script type="text/javascript" src="../bower_components/datatables.net/js/buttons.print.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/indexOptions.js"></script>
+<script src="../dist/js/commonJS.js"></script>
+
+<script>
+    var search = {};
+
+    $(function () {
+        $("#user-tick-form").submit(function () {
+            window.event.returnValue = false;
+            // 发送请求前先确认
+            if (confirm("是否要封禁玩家：" + search.name + "？")) {
+                search.id = $("#tick-inputId").val();
+                search.name = $("#tick-inputName").val();
+                search.beginDate = $("#tick-inputDate1").val();
+                search.endDate = $("#tick-inputDate2").val();
+                search.other = $("#tick-inputOther").val();
+                console.log("测试参数" + JSON.stringify(search));
+                $.ajax({
+                    type: "GET",
+                    url: "bar1.json",
+                    data: search,
+                    dataType: "json",
+                    success: function (result) {
+
+                        alert("已踢出玩家：" + result.name);
+                    },
+                    error: function () {
+                        alert("踢出失败，请重试！");
+                    }
+                })
+            }
+        });
+
+        $("#user-ban-form").submit(function () {
+            window.event.returnValue = false;
+            // 发送请求前先确认
+            if (confirm("是否要封禁玩家：" + search.name + "？")) {
+                search.id = $("#ban-inputId").val();
+                search.name = $("#ban-inputName").val();
+                search.beginDate = $("#ban-inputDate1").val();
+                search.endDate = $("#ban-inputDate2").val();
+                search.other = $("#ban-inputOther").val();
+                console.log("测试参数" + JSON.stringify(search));
+                $.ajax({
+                    type: "GET",
+                    url: "bar1.json",
+                    data: search,
+                    dataType: "json",
+                    success: function (result) {
+
+                        alert("已封禁玩家：" + result.name);
+                    },
+                    error: function () {
+                        alert("封禁失败，请重试！");
+                    }
+                })
+            }
+        });
+
+        $("#user-send-form").submit(function () {
+            window.event.returnValue = false;
+            // 发送请求前先确认
+            if (confirm("是否要发送邮件给玩家：" + search.name + "？")) {
+                search.id = $("#send-inputId").val();
+                search.name = $("#send-inputName").val();
+                search.beginDate = $("#send-inputDate1").val();
+                search.endDate = $("#send-inputDate2").val();
+                search.other = $("#send-inputOther").val();
+                console.log("测试参数" + JSON.stringify(search));
+                $.ajax({
+                    type: "GET",
+                    url: "bar1.json",
+                    data: search,
+                    dataType: "json",
+                    success: function (result) {
+
+                        alert("已发送邮件给玩家：" + result.name);
+                    },
+                    error: function () {
+                        alert("发送邮件失败，请重试！");
+                    }
+                })
+            }
+        });
+    });
+</script>
+</body>
+</html>

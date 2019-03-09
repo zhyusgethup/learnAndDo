@@ -19,13 +19,13 @@ public class LoginOutAction extends LoginAction {
         log.setType(0);
     }
 
-    public static class StaLoginoutAdjuster implements Adjust{
-        @Override
-        public void adjust(User user, Server server, Map<String, Object> params) {
-            CommonActionUtil.loginCheckIsWrong(user,server);
-            String acc = user.getAcc();
-            server.getUser(acc).setLogoutTime(System.currentTimeMillis());
-            server.getOnlineUser().remove(acc);
-        }
-    }
+//    public static class StaLoginoutAdjuster implements Adjust{
+//        @Override
+//        public void adjust(User user, Server server, Map<String, Object> params) {
+//            CommonActionUtil.loginCheckIsWrong(user,server);
+//            String acc = user.getAcc();
+//            server.getUser(acc).setLogoutTime(System.currentTimeMillis());
+//            server.getOnlineUser().remove(acc);
+//        }
+//    }
 }

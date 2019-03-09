@@ -8,33 +8,32 @@ import java.util.Map;
 
 public class GoodAddAction extends Action {
     public GoodAddAction(Adjust adjust) {
-        super(adjust);
         log = new GoodAddLog();
         name = "添加道具";
     }
-    public  static class  StaGoodAddAdjuster implements Adjust{
-        private int cid;
-        private int add;
-
-        public StaGoodAddAdjuster(int cid, int add) {
-            this.cid = cid;
-            this.add = add;
-        }
-
-        @Override
-        public void adjust(User user, Server server, Map<String, Object> params) {
-            CommonActionUtil.loginCheckIsWrong(user,server);
-            String acc = user.getAcc();
-            Map<Integer, Integer> good = server.getUser(acc).getGood();
-            if(good.containsKey(cid)){
-                good.put(cid,good.get(cid) + add);
-            }else{
-                good.put(cid,add);
-            }
-            params.put("add", add);
-            params.put("cid", cid);
-        }
-    }
+//    public  static class  StaGoodAddAdjuster implements Adjust{
+//        private int cid;
+//        private int add;
+//
+//        public StaGoodAddAdjuster(int cid, int add) {
+//            this.cid = cid;
+//            this.add = add;
+//        }
+//
+//        @Override
+//        public void adjust(User user, Server server, Map<String, Object> params) {
+//            CommonActionUtil.loginCheckIsWrong(user,server);
+//            String acc = user.getAcc();
+//            Map<Integer, Integer> good = server.getUser(acc).getGood();
+//            if(good.containsKey(cid)){
+//                good.put(cid,good.get(cid) + add);
+//            }else{
+//                good.put(cid,add);
+//            }
+//            params.put("add", add);
+//            params.put("cid", cid);
+//        }
+//    }
     @Override
     public void gener(User user, Server server) {
         GoodAddLog log = (GoodAddLog)this.log;

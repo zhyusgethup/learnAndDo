@@ -11,24 +11,23 @@ import java.util.Map;
 
 public class GuildFightAction extends Action{
     public GuildFightAction(Adjust adjust) {
-        super(adjust);
         log = new GuildFightLog();
         name = "公会战斗";
     }
 
-    public  static class  StaGuildFightAdjustor implements Adjust{
-        private int gid;
-        private String gName;
-        public StaGuildFightAdjustor(int gid,String gName) {
-            this.gid = gid;
-            this.gName =gName;
-        }
-        @Override
-        public void adjust(User user, Server server, Map<String, Object> params) {
-            params.put("gName",gName);
-            params.put("gid",gid);
-        }
-    }
+//    public  static class  StaGuildFightAdjustor implements Adjust{
+//        private int gid;
+//        private String gName;
+//        public StaGuildFightAdjustor(int gid,String gName) {
+//            this.gid = gid;
+//            this.gName =gName;
+//        }
+//        @Override
+//        public void adjust(User user, Server server, Map<String, Object> params) {
+//            params.put("gName",gName);
+//            params.put("gid",gid);
+//        }
+//    }
     @Override
     public void gener(User user, Server server) {
         CommonActionUtil.loginCheckIsWrong(user,server);

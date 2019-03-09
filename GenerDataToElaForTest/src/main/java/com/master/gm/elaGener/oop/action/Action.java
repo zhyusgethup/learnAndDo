@@ -16,6 +16,23 @@ import java.util.Map;
  */
 public abstract class Action {
     protected String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Map<String, Object> getParams() {
+        return params;
+    }
+
+    public void setParams(Map<String, Object> params) {
+        this.params = params;
+    }
+
     protected Adjust adjust;
     protected Action before;
     protected Action next;
@@ -40,6 +57,7 @@ public abstract class Action {
 
     public void setAdjust(Adjust adjust) {
         this.adjust = adjust;
+        this.adjust.setAction(this);
     }
 
     public Action getBefore() {
@@ -68,8 +86,7 @@ public abstract class Action {
 
     abstract public void gener(User user, Server server);
 
-    public Action(Adjust adjust) {
-        this.adjust = adjust;
+    public Action() {
         params = new HashMap<>();
     }
 
@@ -77,7 +94,6 @@ public abstract class Action {
         Action action = this;
         while(null != action){
             try {
-                action.adjust.adjustor(user, server,params);
                 action.gener(user, server);
                 action.log.setServer(server.getServerId());
                 JSONObject data = action.log.getData();

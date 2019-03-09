@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>火焰纹章管理系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins -->
+    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <!-- DataTables Buttons -->
+    <link rel="stylesheet" type="text/css" href="../bower_components/datatables.net/css/jquery.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="../bower_components/datatables.net/css/buttons.dataTables.css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../dist/js/html5shiv.min.js"></script>
+    <script src="../dist/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <script type="text/javascript">
+        window.onload = function () {
+            $.ajax({
+                type: "post",
+                // url: "http://192.168.10.151/system/table/queryNowData?tableName=plaGuild",
+                url: "users.json",
+                data: {},
+                dataType: "json",
+                async: true,
+                success: function (data) {
+                    //动态增加表名
+                    var tableName = "<h3 class='box-title'>" + data.data.table.name + "</h3>" +
+                        "<ol class='breadcrumb'>\n" +
+                        "<li><a href='index.html'><i class='fa fa-dashboard'></i> HYWZ</a></li>\n" +
+                        "<li><a href='#'></i> Tables</a></li>\n" +
+                        "<li class='active'>" + data.data.table.name + "</li>\n" +
+                        "</ol>";
+                    $("#page-header").html(tableName);
+                    //动态增加表头
+                    var tableHead = "<thead>"
+                    for (var i = 0; i < data.data.table.th.length; i++) {
+                        tableHead += "<tr>"
+                        for (var j = 0; j < Object.keys(data.data.table.th[i]).length; j++) {
+                            tableHead += "<td>" + data.data.table.th[i][j] + "</td>"
+                        }
+                        tableHead += "</tr>"
+                    }
+                    tableHead += "</thead>";
+                    //动态增加内容
+                    var tableData = "<tbody>"
+                    for (var i = 0; i < data.data.table.content.length; i++) {
+                        tableData += "<tr>"
+                        for (var j = 0; j < Object.keys(data.data.table.content[i]).length; j++) {
+                            tableData += "<td>" + data.data.table.content[i][j] + "</td>"
+                        }
+                        tableData += "</tr>"
+                    }
+                    tableData += "</tbody>"
+                    //现在tableData已经生成好了，把他赋值给上面的tbody
+                    $("#data-table").html(tableHead + tableData)
+                }
+            });
+        }
+    </script>
+    <style>
+        .fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .fileinput-button input {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+
+        <!-- Logo -->
+        <a href="http://huyusoft.com/" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>H</b>G</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Huyu</b>Game</span>
+        </a>
+
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="../dist/img/user3-128x128.jpg" class="user-image" alt="User Image">
+                            <span class="hidden-xs">Huyu</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+
+                                <p>
+                                    Huyu - Game
+                                    <small>2019年3月</small>
+                                </p>
+                            </li>
+                            <!-- Menu Body -->
+                            <li class="user-body">
+                                <div class="row">
+                                    <div class="col-xs-4 text-center">
+                                        <a href="http://huyusoft.com/">官网</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">信息</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">反馈</a>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a onclick="if(!confirm('提示：确定要返回管理平台吗？')) return false;"
+                                       href="http://127.0.0.1:8080/platform" class="btn btn-default btn-flat">返回管理平台</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a onclick="if(!confirm('提示：确定要注销吗？')) return false;"
+                                       href="http://127.0.0.1:8080/platform" class="btn btn-default btn-flat">登出</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Control Sidebar Toggle Button -->
+                    <li>
+                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">导航栏</li>
+                <!-- Optionally, you can add icons to the links -->
+                <li><a href="index.html"><i class="fa fa-dashboard"></i> <span>火焰纹章</span></a></li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-table"></i>
+                        <span>统计表格</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="comprehensiveData.html"><i class="fa fa-circle-o"></i>
+                            <span>综合数据</span></a></li>
+                        <li><a href="totalData.html"><i class="fa fa-circle-o"></i> <span>总计数据</span></a></li>
+                        <li><a href="userRentention.html"><i class="fa fa-circle-o"></i> <span>用户留存</span></a></li>
+                        <li><a href="online.html"><i class="fa fa-circle-o"></i> <span>在线时长</span></a></li>
+                        <li><a href="playerGuide.html"><i class="fa fa-circle-o"></i> <span>新手引导流失</span></a></li>
+                        <li><a href="userLose.html"><i class="fa fa-circle-o"></i> <span>用户流失</span></a></li>
+                        <li><a href="userJoin.html"><i class="fa fa-circle-o"></i> <span>用户参与</span></a></li>
+                        <li><a href="roleGrow.html"><i class="fa fa-circle-o"></i> <span>角色养成</span></a></li>
+                        <li><a href="guildAct.html"><i class="fa fa-circle-o"></i> <span>公会活跃</span></a></li>
+                        <li><a href="goodsCost.html"><i class="fa fa-circle-o"></i> <span>道具消耗</span></a></li>
+                        <li><a href="allRentention.html"><i class="fa fa-circle-o"></i> <span>全服留存</span></a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-pie-chart"></i>
+                        <span>统计图表</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="testChart.html"><i class="fa fa-circle-o"></i> <span>测试图表</span></a></li>
+                    </ul>
+                </li>
+                <li class="active"><a href="fileManager.html"><i class="fa fa-folder"></i> <span>测试上传</span></a></li>
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header" id="page-header">
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="col-sm-3" id="buttonDiv" align="left">
+                            </div>
+                            <div class="col-sm-9">
+                                <button id="upload" class="dt-button">上传</button>
+                                <span class="btn btn-default fileinput-button">
+                                    <span>选择文件</span>
+                                    <input type="file" id="file">
+                                </span>
+                                <div align="center">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table class="table table-bordered table-striped" id="data-table" style="width:100%">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+            <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- Home tab content -->
+            <div class="tab-pane" id="control-sidebar-home-tab">
+                <h3 class="control-sidebar-heading">最新活动</h3>
+                <ul class="control-sidebar-menu">
+                    <h5 align="center">暂未开放</h5>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+                <h3 class="control-sidebar-heading">任务进度</h3>
+                <ul class="control-sidebar-menu">
+                    <h5 align="center">暂未开放</h5>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+            </div>
+            <!-- /.tab-pane -->
+            <!-- Stats tab content -->
+            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+            <!-- /.tab-pane -->
+            <!-- Settings tab content -->
+            <div class="tab-pane" id="control-sidebar-settings-tab">
+                <form method="post">
+                    <h3 class="control-sidebar-heading">常规设置</h3>
+                    <h5 align="center">暂未开放</h5>
+                </form>
+            </div>
+            <!-- /.tab-pane -->
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+    <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->`
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- DataTables Buttons -->
+<script type="text/javascript" src="../bower_components/ajax/js/jszip.js"></script>
+<script type="text/javascript" src="../bower_components/ajax/js/vfs_fonts.js"></script>
+<script type="text/javascript" src="../bower_components/ajax/js/pdfmake.js"></script>
+<script type="text/javascript" src="../bower_components/datatables.net/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../bower_components/datatables.net/js/dataTables.buttons.js"></script>
+<script type="text/javascript" src="../bower_components/datatables.net/js/buttons.flash.js"></script>
+<script type="text/javascript" src="../bower_components/datatables.net/js/buttons.html5.js"></script>
+<script type="text/javascript" src="../bower_components/datatables.net/js/buttons.print.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/indexOptions.js"></script>
+<script src="../dist/js/popBox.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#upload").click(function () {
+            var formData = new FormData();
+            if (document.getElementById("file").value == "") {
+                $.MsgBox.Alert("失败", "请检查是否已选择文件")
+                return false;
+            }
+            formData.append('file', $('#file')[0].files[0]);
+
+            $.ajax({
+                url: "http://192.168.10.160:8080/system/table/uploadFile",
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $.MsgBox.Alert("成功", "文件已经成功上传"),
+                        console.log("success");
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var table =
+            $('#data-table').DataTable({
+                "oLanguage": {//国际化配置
+                    "sLengthMenu": "显示 _MENU_ 条",
+                    "sInfo": "当前数据为从第从 <b>_START_ 到 _END_</b>条记录 总记录数为_TOTAL_条",
+                    "sSearch": "搜索",
+                    "sZeroRecords": "没有符合条件的数据",
+                    "sProcessing": "正在获取数据，请稍后...",
+                    "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                    "sInfoFiltered": "(全部记录数 _TOTAL_ 条)",
+                    "sUrl": "",
+                    "oPaginate": {
+                        "sFirst": "第一页",
+                        "sPrevious": "上一页",
+                        "sNext": "下一页",
+                        "sLast": "最后一页"
+                    }
+                },
+                buttons: [
+                    {
+                        extend: 'copy',
+                        text: '复制',
+                    },
+                    {
+                        extend: 'excel',
+                        text: '导出<u>EXCEL</u>',
+                        title: '文件管理'
+                    },
+                    {
+                        extend: 'csv',
+                        text: '导出<u>CSV</u>',
+                        title: '文件管理'
+                    }, {
+                        extend: 'print',
+                        text: '打印',
+                        title: '文件管理'
+                    }
+                ],
+                'autoWidth': false,
+                "scrollX": true   //是否支持滚动
+            });
+        table.buttons().container()
+            .appendTo($('#buttonDiv'));
+    })
+</script>
+</body>
+</html>

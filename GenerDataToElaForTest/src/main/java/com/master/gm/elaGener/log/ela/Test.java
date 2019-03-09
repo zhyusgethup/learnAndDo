@@ -24,14 +24,14 @@ public class Test {
         Server server = new Server("2003");
         User user = new User("acc04");
         server.setSer_cre_time(1551888000000L);
-        new CreAction(new CreAction.StandCreAdjust()).next(new LoginAction(new LoginAction.StaLoginAdjuster())).
-                next(new GoodAddAction(new GoodAddAction.StaGoodAddAdjuster(100001,500))).
-                next(new GoodMinusAction(new GoodMinusAction.StaGoodMinusAdjuster(100001,400))).
-                next(new GuildCountAction(new GuildCountAction.StaGuildCountAdjustor(30))).
-                next(new GuildDonateAction(new GuildDonateAction.StaGuildDonateAdjustor(100))).
-                next(new GuildMemberAction(new GuildMemberAction.StaGuildMemberAdjustor(100))).
-                next(new GuildFightAction(new GuildFightAction.StaGuildFightAdjustor(100,"牛头山"))).
-                next(new LoginOutAction(new LoginOutAction.StaLoginoutAdjuster()))
+        new CreAction()/*.next(new LoginAction(new LoginAction.StaLoginAdjuster())).*/
+//                next(new GoodAddAction(new GoodAddAction.StaGoodAddAdjuster(100001,500))).
+//                next(new GoodMinusAction(new GoodMinusAction.StaGoodMinusAdjuster(100001,400))).
+//                next(new GuildCountAction(new GuildCountAction.StaGuildCountAdjustor(30))).
+//                next(new GuildDonateAction(new GuildDonateAction.StaGuildDonateAdjustor(100))).
+//                next(new GuildMemberAction(new GuildMemberAction.StaGuildMemberAdjustor(100))).
+//                next(new GuildFightAction(new GuildFightAction.StaGuildFightAdjustor(100,"牛头山"))).
+//                next(new LoginOutAction(new LoginOutAction.StaLoginoutAdjuster()))
                 .end()
                 .action(user,server);
         System.out.println(server);
@@ -49,8 +49,8 @@ public class Test {
     }
     public static void main(String[] args) throws Exception {
 //        insertByLogBean();
-//        deleteIndex("remove");
-        testActions();
+        deleteIndex("remove");
+//        testActions();
 
     }
 

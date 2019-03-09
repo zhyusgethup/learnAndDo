@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title></title>
+    <script src="../assets/js/jquery-1.11.1.min.js"></script>
+    <script src="../assets/js/jquery-form.js"></script>
+    <style>
+        div {
+            width: 100%;
+        }
+
+        .logo img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .upload {
+            position: relative;
+            width: 80px;
+            height: 18px;
+            line-height: 18px;
+            background: #2fc7c9;
+            text-align: center;
+            color: #FFF;
+            padding: 0px 5px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            margin: 0 auto;
+        }
+
+        .upload form {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+
+        .upload form input {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="logo">
+    <!--<img src="img/1.jpg" />-->
+</div>
+<div class="upload">
+    <p>上传图片</p>
+    <form id="uploadForm" enctype="multipart/form-data" method="post"
+          action="http://192.168.10.160:8080/system/table/uploadFile">
+        <input type="file" name="imageFile" id="imageFile" onchange="fileSelected()"/>
+    </form>
+</div>
+<script>
+    var iMaxFilesize = 2097152; //2M
+    window.fileSelected = function () {
+        var oFile = document.getElementById('imageFile').files[0];    //读取文件
+        var rFilter = /^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)$/i;
+        var formData = new FormData();
+        formData.append('file',oFile);
+        $.ajax({
+            url: "http://192.168.10.160:8080/system/table/uploadFile",
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                console.log("success");
+            }
+        });
+    };
+</script>
+</body>
+</html>

@@ -10,36 +10,35 @@ import java.util.Map;
 
 public class GoodMinusAction extends Action {
     public GoodMinusAction(Adjust adjust) {
-        super(adjust);
         log = new GoodMinusLog();
         name = "添加道具";
     }
-    public  static class  StaGoodMinusAdjuster implements Adjust{
-        private int cid;
-        private int minus;
-
-        public StaGoodMinusAdjuster(int cid, int minus) {
-            this.cid = cid;
-            this.minus = minus;
-        }
-
-        @Override
-        public void adjust(User user, Server server, Map<String, Object> params) {
-            CommonActionUtil.loginCheckIsWrong(user,server);
-            String acc = user.getAcc();
-            Map<Integer, Integer> good = server.getUser(acc).getGood();
-            if(!good.containsKey(cid))
-                throw new ActionException("玩家" + acc + "没有道具" + cid);
-            Integer num = good.get(cid);
-            if(num < minus)
-                throw new ActionException("玩家" + acc + "道具" + cid + "不足[" + num + ":" + minus + "]");
-            good.put(cid,num - minus);
-            ActionParamType.GOOD_MINUS.val(minus);
-            ActionParamType.GOOD_CID.val(cid);
-            params.put("minus", minus);
-            params.put("cid", cid);
-        }
-    }
+//    public  static class  StaGoodMinusAdjuster implements Adjust{
+//        private int cid;
+//        private int minus;
+//
+//        public StaGoodMinusAdjuster(int cid, int minus) {
+//            this.cid = cid;
+//            this.minus = minus;
+//        }
+//
+//        @Override
+//        public void adjust(User user, Server server, Map<String, Object> params) {
+//            CommonActionUtil.loginCheckIsWrong(user,server);
+//            String acc = user.getAcc();
+//            Map<Integer, Integer> good = server.getUser(acc).getGood();
+//            if(!good.containsKey(cid))
+//                throw new ActionException("玩家" + acc + "没有道具" + cid);
+//            Integer num = good.get(cid);
+//            if(num < minus)
+//                throw new ActionException("玩家" + acc + "道具" + cid + "不足[" + num + ":" + minus + "]");
+//            good.put(cid,num - minus);
+//            ActionParamType.GOOD_MINUS.val(minus);
+//            ActionParamType.GOOD_CID.val(cid);
+//            params.put("minus", minus);
+//            params.put("cid", cid);
+//        }
+//    }
     @Override
     public void gener(User user, Server server) {
         CommonActionUtil.loginCheckIsWrong(user,server);

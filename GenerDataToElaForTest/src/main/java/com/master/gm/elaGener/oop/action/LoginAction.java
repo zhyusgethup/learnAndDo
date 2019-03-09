@@ -9,26 +9,25 @@ import java.util.Map;
 
 public class LoginAction extends Action {
     public LoginAction(Adjust adjust) {
-        super(adjust);
         log = new LoginAndOutLog();
         name = "登陆游戏";
     }
 
 
 
-    public static class StaLoginAdjuster implements Adjust{
-        @Override
-        public void adjust(User user, Server server, Map<String, Object> params) {
-            if(!server.getRegeterUser().contains(user.getAcc()))
-                throw new ActionException("玩家" + user.getAcc() + "还没在服务器" + server.getServerId() + "注册");
-            if(server.getOnlineUser().contains(user.getAcc()))
-                throw new ActionException("玩家" + user.getAcc() + "在服务器" + server.getServerId() + "已登陆");
-
-            String acc = user.getAcc();
-            server.getUser(acc).setLoginTime(System.currentTimeMillis());
-            server.getOnlineUser().add(acc);
-        }
-    }
+//    public static class StaLoginAdjuster implements Adjust{
+//        @Override
+//        public void adjust(User user, Server server, Map<String, Object> params) {
+//            if(!server.getRegeterUser().contains(user.getAcc()))
+//                throw new ActionException("玩家" + user.getAcc() + "还没在服务器" + server.getServerId() + "注册");
+//            if(server.getOnlineUser().contains(user.getAcc()))
+//                throw new ActionException("玩家" + user.getAcc() + "在服务器" + server.getServerId() + "已登陆");
+//
+//            String acc = user.getAcc();
+//            server.getUser(acc).setLoginTime(System.currentTimeMillis());
+//            server.getOnlineUser().add(acc);
+//        }
+//    }
 
     @Override
     public void gener(User user, Server server) {
