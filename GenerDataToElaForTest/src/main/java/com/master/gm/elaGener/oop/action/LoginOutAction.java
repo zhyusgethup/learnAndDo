@@ -4,6 +4,8 @@ import com.master.gm.elaGener.log.ela.bean.LoginAndOutLog;
 import com.master.gm.elaGener.oop.Server;
 import com.master.gm.elaGener.oop.User;
 
+import java.util.Map;
+
 public class LoginOutAction extends LoginAction {
     public LoginOutAction(Adjust adjust) {
         super(adjust);
@@ -19,7 +21,7 @@ public class LoginOutAction extends LoginAction {
 
     public static class StaLoginoutAdjuster implements Adjust{
         @Override
-        public void adjust(User user, Server server) {
+        public void adjust(User user, Server server, Map<String, Object> params) {
             CommonActionUtil.loginCheckIsWrong(user,server);
             String acc = user.getAcc();
             server.getUser(acc).setLogoutTime(System.currentTimeMillis());

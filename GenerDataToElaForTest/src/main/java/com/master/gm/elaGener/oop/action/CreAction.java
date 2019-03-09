@@ -4,7 +4,9 @@ import com.master.gm.elaGener.log.ela.bean.CreateLog;
 import com.master.gm.elaGener.oop.Server;
 import com.master.gm.elaGener.oop.User;
 
-public class CreAction extends Action {
+import java.util.Map;
+
+public class CreAction<just> extends Action {
 
 
     public CreAction(Adjust adjust) {
@@ -22,7 +24,7 @@ public class CreAction extends Action {
 
     public static class StandCreAdjust implements Adjust{
         @Override
-        public void adjust(User user, Server server) {
+        public void adjust(User user, Server server, Map<String, Object> params) {
             if(server.getRegeterUser().contains(user.getAcc()))
                 throw new ActionException("玩家" + user.getAcc() + "在服务器" + server.getServerId() + "已注册");
             server.getRegeterUser().add(user.getAcc());

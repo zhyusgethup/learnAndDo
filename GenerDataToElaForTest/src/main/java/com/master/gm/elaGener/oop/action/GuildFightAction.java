@@ -7,6 +7,8 @@ import com.master.gm.elaGener.log.ela.bean.GuildLog;
 import com.master.gm.elaGener.oop.Server;
 import com.master.gm.elaGener.oop.User;
 
+import java.util.Map;
+
 public class GuildFightAction extends Action{
     public GuildFightAction(Adjust adjust) {
         super(adjust);
@@ -14,7 +16,7 @@ public class GuildFightAction extends Action{
         name = "公会战斗";
     }
 
-    public class StaGuildFightAdjustor implements Adjust{
+    public  static class  StaGuildFightAdjustor implements Adjust{
         private int gid;
         private String gName;
         public StaGuildFightAdjustor(int gid,String gName) {
@@ -22,7 +24,7 @@ public class GuildFightAction extends Action{
             this.gName =gName;
         }
         @Override
-        public void adjust(User user, Server server) {
+        public void adjust(User user, Server server, Map<String, Object> params) {
             params.put("gName",gName);
             params.put("gid",gid);
         }

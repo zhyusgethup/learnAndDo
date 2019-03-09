@@ -4,6 +4,8 @@ import com.master.gm.elaGener.log.ela.bean.GuildCountLog;
 import com.master.gm.elaGener.oop.Server;
 import com.master.gm.elaGener.oop.User;
 
+import java.util.Map;
+
 public class GuildCountAction extends Action{
 
     public GuildCountAction(Adjust adjust) {
@@ -12,13 +14,13 @@ public class GuildCountAction extends Action{
         name = "公会数量";
     }
 
-    public  class StaGuildCountAdjustor implements Adjust{
+    public   static class  StaGuildCountAdjustor implements Adjust{
         private int count;
         public StaGuildCountAdjustor(int count) {
             this.count = count;
         }
         @Override
-        public void adjust(User user, Server server) {
+        public void adjust(User user, Server server, Map<String, Object> params) {
             CommonActionUtil.loginCheckIsWrong(user,server);
             params.put("count",count);
         }

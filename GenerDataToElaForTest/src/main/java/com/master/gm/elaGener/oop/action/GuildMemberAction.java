@@ -5,6 +5,8 @@ import com.master.gm.elaGener.log.ela.bean.GuildMemeberLog;
 import com.master.gm.elaGener.oop.Server;
 import com.master.gm.elaGener.oop.User;
 
+import java.util.Map;
+
 public class GuildMemberAction extends Action{
 //gMemCount
     public GuildMemberAction(Adjust adjust) {
@@ -12,13 +14,13 @@ public class GuildMemberAction extends Action{
         log = new GuildMemeberLog();
         name = "公会成员";
     }
-    public class StaGuildMemberAdjustor implements Adjust{
+    public  static class  StaGuildMemberAdjustor implements Adjust{
         private int gMemCount;
         public StaGuildMemberAdjustor(int gMemCount) {
             this.gMemCount = gMemCount;
         }
         @Override
-        public void adjust(User user, Server server) {
+        public void adjust(User user, Server server, Map<String, Object> params) {
             CommonActionUtil.loginCheckIsWrong(user,server);
             ActionParamType.GUILD_G_M_COUNT.val(gMemCount);
             params.put("gMemCount",gMemCount);

@@ -14,7 +14,7 @@ public class GoodMinusAction extends Action {
         log = new GoodMinusLog();
         name = "添加道具";
     }
-    public class StaGoodMinusAdjuster implements Adjust{
+    public  static class  StaGoodMinusAdjuster implements Adjust{
         private int cid;
         private int minus;
 
@@ -24,7 +24,7 @@ public class GoodMinusAction extends Action {
         }
 
         @Override
-        public void adjust(User user, Server server) {
+        public void adjust(User user, Server server, Map<String, Object> params) {
             CommonActionUtil.loginCheckIsWrong(user,server);
             String acc = user.getAcc();
             Map<Integer, Integer> good = server.getUser(acc).getGood();

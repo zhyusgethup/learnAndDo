@@ -12,7 +12,7 @@ public class GoodAddAction extends Action {
         log = new GoodAddLog();
         name = "添加道具";
     }
-    public class StaGoodAddAdjuster implements Adjust{
+    public  static class  StaGoodAddAdjuster implements Adjust{
         private int cid;
         private int add;
 
@@ -22,7 +22,7 @@ public class GoodAddAction extends Action {
         }
 
         @Override
-        public void adjust(User user, Server server) {
+        public void adjust(User user, Server server, Map<String, Object> params) {
             CommonActionUtil.loginCheckIsWrong(user,server);
             String acc = user.getAcc();
             Map<Integer, Integer> good = server.getUser(acc).getGood();

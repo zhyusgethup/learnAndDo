@@ -5,6 +5,8 @@ import com.master.gm.elaGener.log.ela.bean.LoginAndOutLog;
 import com.master.gm.elaGener.oop.Server;
 import com.master.gm.elaGener.oop.User;
 
+import java.util.Map;
+
 public class LoginAction extends Action {
     public LoginAction(Adjust adjust) {
         super(adjust);
@@ -16,7 +18,7 @@ public class LoginAction extends Action {
 
     public static class StaLoginAdjuster implements Adjust{
         @Override
-        public void adjust(User user, Server server) {
+        public void adjust(User user, Server server, Map<String, Object> params) {
             if(!server.getRegeterUser().contains(user.getAcc()))
                 throw new ActionException("玩家" + user.getAcc() + "还没在服务器" + server.getServerId() + "注册");
             if(server.getOnlineUser().contains(user.getAcc()))

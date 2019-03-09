@@ -77,7 +77,7 @@ public abstract class Action {
         Action action = this;
         while(null != action){
             try {
-                action.adjust.adjustor(user, server);
+                action.adjust.adjustor(user, server,params);
                 action.gener(user, server);
                 action.log.setServer(server.getServerId());
                 JSONObject data = action.log.getData();
