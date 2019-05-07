@@ -8,7 +8,7 @@ import java.nio.charset.Charset;
 public class TextAnalyse {
 
 	public static void main(String[] args) {
-		String src = "../srcFiles";
+		String src = "../test";
 //		String src = "../";
 //		System.out.println(TextAnalyse.class.getResource(src));
 		String path = TextAnalyse.class.getResource(src).getPath();
