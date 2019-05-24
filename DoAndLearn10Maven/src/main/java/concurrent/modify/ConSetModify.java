@@ -35,9 +35,9 @@ public class ConSetModify {
 
 	            while(i$.hasNext()) {
 	                Integer o1 = i$.next();
-//	                if(o1 % 2 == 0)
+	                if(o1 % 2 == 0)
 	                	i$.remove();
-	                	i$.remove();
+//	                	i$.remove();
 	                System.out.println("key " + o1);
 	            }
 
