@@ -5,37 +5,44 @@ import java.nio.charset.Charset;
 
 public class ReadUtils {
 
-    public static StringBuilder getWordsFromFileAndAnalyseCharset(File file) {
+    public static StringBuilder getWordFromInputStreamAndAnayseCharset(InputStream inputStream) {
         StringBuilder sb = new StringBuilder();
-        if(file.exists()) {
-            FileInputStream fis = null;
-            BufferedInputStream bis = null;
-            try {
-                fis = new FileInputStream(file);
-                bis = new BufferedInputStream(fis);
-                String charset = analyseCharset(bis);
-                System.out.println(charset);
-                bis.reset();
-                System.out.println(bis.available());
-                byte[] bytes = new byte[bis.available()];
-                int pos = bis.read(bytes);
-                sb.append(new String(bytes, Charset.forName(charset)));
-//				System.out.println(sb.toString());
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }finally {
-                if(fis != null) {
-                    try {
-                        fis.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+        BufferedInputStream bis = null;
+        try {
+            bis = new BufferedInputStream(inputStream);
+            String charset = analyseCharset(bis);
+            bis.reset();
+            byte[] bytes = new byte[bis.available()];
+            StringBuilder sbb = new StringBuilder();
+            for (int i; (i = bis.read(bytes)) != -1;) {
+                sb.append(new String(bytes, 0, i, Charset.forName(charset)));
+                if(i == 0)
+                    break;
+            }
+            int pos = bis.read(bytes);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(bis != null) {
+                try {
+                    bis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }
         return sb;
+    }
+    public static StringBuilder getWordsFromFileAndAnalyseCharset(File file) throws FileNotFoundException {
+        if(file.exists()) {
+            FileInputStream fis = null;
+            fis = new FileInputStream(file);
+            getWordFromInputStreamAndAnayseCharset(new BufferedInputStream(fis));
+        }
+        return null;
     }
 
     public static String analyseCharset(BufferedInputStream bis) throws IOException {

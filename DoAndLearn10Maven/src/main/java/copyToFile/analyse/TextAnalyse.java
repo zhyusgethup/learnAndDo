@@ -7,7 +7,7 @@ import java.nio.charset.Charset;
 
 public class TextAnalyse {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		String src = "../test";
 //		String src = "../";
 //		System.out.println(TextAnalyse.class.getResource(src));
