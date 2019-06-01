@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+    <template src="F:\git\learnAndDo\DoAndLearn10Maven\src\main\resources\log41.properties" type="properties">
+        <checker key="log4j.appender.D">org.apache.log4j.DailyRollingFileAppender</checker>
+        <checker key="log4j.appender.D.File">a</checker>
+    </template>
+    <template src = "F:\git\learnAndDo\DoAndLearn10Maven\pom.xml" type="xml">
+        <checker xpath="/setting/webUrl">http://10.10.2.56:8080</checker>
+        <checker xpath="/setting/companyWebURL">http://10.10.2.56:8080</checker>
+    </template>
+</root>
