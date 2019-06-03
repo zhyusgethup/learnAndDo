@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
     <template src="F:\git\learnAndDo\DoAndLearn10Maven\src\main\resources\log41.properties" type="properties">
         <checker key="log4j.appender.D">org.apache.log4j.DailyRollingFileAppender</checker>
