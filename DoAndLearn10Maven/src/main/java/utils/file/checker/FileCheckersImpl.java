@@ -5,7 +5,7 @@ package utils.file.checker;
  * @date 2019-05-28 09:51:30
  * 检测的最小单元 针对的是配置
  */
-public class Checkers {
+public class FileCheckersImpl implements FileChecker{
 
     private int type;
 

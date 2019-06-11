@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<setting>
+    <!-- 工作开始时间 -->
+    <workBegin>0</workBegin>
+    <!-- 信息费 -->
+    <infoFee>
+        <!-- 扣去节点 -->
+        <deduct>完成</deduct>
+        <!-- 扣去费用 -->
+        <fee>0.0</fee>
+    </infoFee>
+    <sms>
+        <url>http://dj.easymin.com/</url>
+        <appKey>buyongle</appKey>
+        <secretKey>buyongle</secretKey>
+    </sms>
+    <!--允许司机抢单-->
+    <allowRushOrder>false</allowRushOrder>
+    <!--司机抢单公里数-->
+    <rushOrderKm>80.0</rushOrderKm>
+    <!-- 招商内容 -->
+    <businessContent>null</businessContent>
+    <!-- 司机相关 -->
+    <allowCallDriver>false</allowCallDriver>
+    <serviceCallCenter>028-61703886</serviceCallCenter>
+    <companyWebURL>http://10.10.2.56:8080</companyWebURL>
+    <!-- 自动收回时间 -->
+    <revokeTime>60</revokeTime>
+    <!-- 客户相关 -->
+    <nearDriversKm>5.0</nearDriversKm>
+    <!-- 代驾协议 -->
+    <agreement>null</agreement>
+    <!-- 分享内容 -->
+    <shareContent>null</shareContent>
+    <!-- 客服电话类型 0使用主公司 1使用各自公司 -->
+    <whichServicePhone>0</whichServicePhone>
+    <!-- 支付相关-->
+    <!-- 系统网址-->
+    <webUrl>http://10.10.2.56:8080</webUrl>
+    <!-- 支付宝   商户ID-->
+    <alipayPartnerID></alipayPartnerID>
+    <!-- 支付宝   商户账号-->
+    <alipaySellerID></alipaySellerID>
+    <!-- 支付宝   商户的私钥-->
+    <alipayPartnerPrivKey></alipayPartnerPrivKey>
+    <!-- 支付宝   商户的公钥-->
+    <alipayPartnerPublicKey></alipayPartnerPublicKey>
+    <!-- 微信支付   APP_ID-->
+    <wxAppID></wxAppID>
+    <!-- 微信支付   App_Secret-->
+    <wxAppSecret></wxAppSecret>
+    <!-- 微信支付   PARTNER_ID-->
+    <wxPartnerID></wxPartnerID>
+    <!-- 微信支付   Partner_Key-->
+    <wxPartnerKey></wxPartnerKey>
+    <!-- 微信支付   APP_KEY-->
+    <wxAppKEY></wxAppKEY>
+    <!-- 派单设置   预派单 推荐司机距离-->
+    <paidanKm>5.0</paidanKm>
+    <!-- 派单设置   预派单 推荐司机距离-->
+    <paidanKm>5.0</paidanKm>
+    <!-- 是否允许工作車-->
+    <allowWorkCar>false</allowWorkCar>
+    <!-- 是否允许工作車转单-->
+    <allowWorkCarZhuandan>false</allowWorkCarZhuandan>
+    <!-- 是否允许司机转单-->
+    <allowDriverZhuandan>true</allowDriverZhuandan>
+    <!-- 是否目的地必填-->
+    <mustToPlace>false</mustToPlace>
+    <!-- 是否客户信息必填-->
+    <mustMemberInfo>false</mustMemberInfo>
+    <!-- 司机距离目的地小于该公里数时 提醒工作车-->
+    <arriveToPlaceKm>5.0</arriveToPlaceKm>
+    <!-- 司机余额低于该值不能上班 0不生效-->
+    <lowestWorkVirtual>0.0</lowestWorkVirtual>
+    <!--个推推送 -->
+    <getuiAppID>XjdV1wRw616WVZPgvvSvv</getuiAppID>
+    <getuiAppKey>6RlxrMwMTt9un2oCquZu43</getuiAppKey>
+    <getuiMaster>DhlVjh671p58xK2GTZcMgA</getuiMaster>
+    <!--个推推送 客户端 -->
+    <getuiMemberAppID>MsbIMUFgulAdVbl8s4AEf4</getuiMemberAppID>
+    <getuiMemberAppKey>yGhAb3aFfc5viviQ30Xy53</getuiMemberAppKey>
+    <getuiMemberMaster>OVcIxhl6hT7Omv1HwdXRKA</getuiMemberMaster>
+    <!--自动下班时间-->
+    <autoOfflineTime>60</autoOfflineTime>
+    <!--后台通信key-->
+    <secKey>da21e0b8e1924c6c8e91726d9e8ca74b</secKey>
+    <!--客户申请vip说明-->
+    <memberApplyContent>null</memberApplyContent>
+    <!--客户分享标题-->
+    <shareTitle>null</shareTitle>
+    <!--客户分享二维码-->
+    <shareTwodCode>null</shareTwodCode>
+    <!--关于我们网站-->
+    <aboutWeb>null</aboutWeb>
+    <!--关于我们电话-->
+    <aboutPhone>null</aboutPhone>
+    <!--关于我们图片-->
+    <aboutLogo>null</aboutLogo>
+    <!--附近司机人数-->
+    <nearDriversAmount>10</nearDriversAmount>
+    <!-- 是否允许司机销单-->
+    <allowDriverCancel>true</allowDriverCancel>
+    <!--优惠劵是否参与提成计算-->
+    <couponTicheng>true</couponTicheng>
+    <autoPaidan>false</autoPaidan>
+    <autoPaidanKm1>1.0</autoPaidanKm1>
+    <autoPaidanKm2>2.0</autoPaidanKm2>
+    <autoPaidanKm3>5.0</autoPaidanKm3>
+    <autoPaidanTime1>3</autoPaidanTime1>
+    <autoPaidanTime2>10</autoPaidanTime2>
+    <autoPaidanTime3>20</autoPaidanTime3>
+    <nearDriversKm2>3.0</nearDriversKm2>
+    <nearDriversAmount2>5</nearDriversAmount2>
+    <quickResponse/>
+    <rushOrderKm1>1.0</rushOrderKm1>
+    <rushOrderKm2>2.0</rushOrderKm2>
+    <rushOrderKm3>5.0</rushOrderKm3>
+    <rushOrderTime1>3</rushOrderTime1>
+    <rushOrderTime2>10</rushOrderTime2>
+    <rushOrderTime3>20</rushOrderTime3>
+    <infoFeeZhuan>0.0</infoFeeZhuan>
+    <infoFeeFreight>0.0</infoFeeFreight>
+    <infoFeeErrand>0.0</infoFeeErrand>
+    <infoFeeCityline>0.0</infoFeeCityline>
+    <upPlatformInfo>false</upPlatformInfo>
+    <doubleFactor>false</doubleFactor>
+    <allowModifyCash>true</allowModifyCash>
+    <allowBaoxiao>true</allowBaoxiao>
+    <allowHelppayNe>true</allowHelppayNe>
+    <insurancesShow>true</insurancesShow>
+    <employApplyImgNessesary>false</employApplyImgNessesary>
+    <openHelpPay>true</openHelpPay>
+    <justPrice>false</justPrice>
+    <paotuiFixPrice>false</paotuiFixPrice>
+    <bookTimeZhuanxian>0</bookTimeZhuanxian>
+    <payCash1>100</payCash1>
+    <payCash2>300</payCash2>
+    <payCash3>500</payCash3>
+    <moenyBase>2</moenyBase>
+    <startQuota>2</startQuota>
+    <endQuota>100</endQuota>
+    <remarks>温馨提示：每次提现金额的区间为2.00到900.00，且只能为2.00的整数倍。</remarks>
+    <wxAppIDEmploy></wxAppIDEmploy>
+    <wxAppSecretEmploy></wxAppSecretEmploy>
+    <wxPartnerIDEmploy></wxPartnerIDEmploy>
+    <wxPartnerKeyEmploy></wxPartnerKeyEmploy>
+    <merId></merId>
+    <acpsdkSignCertPath></acpsdkSignCertPath>
+    <acpsdkSignCertPwd></acpsdkSignCertPwd>
+    <acpProdEnc></acpProdEnc>
+    <acpProdMiddle></acpProdMiddle>
+    <acpProdRoot></acpProdRoot>
+    <merchantId></merchantId>
+    <merKey></merKey>
+    <riskcontrolinfo></riskcontrolinfo>
+    <getuiAppIDGeneral></getuiAppIDGeneral>
+    <getuiAppKeyGeneral></getuiAppKeyGeneral>
+    <getuiMasterGeneral></getuiMasterGeneral>
+    <jiguangEmployAppKey></jiguangEmployAppKey>
+    <jiguangEmployMasterSecret></jiguangEmployMasterSecret>
+    <jiguangPassengerAppKey></jiguangPassengerAppKey>
+    <jiguangPassengerMasterSecret></jiguangPassengerMasterSecret>
+    <autoPaidanZhuanxian>false</autoPaidanZhuanxian>
+    <nearPaotuiOrdersKm>5.0</nearPaotuiOrdersKm>
+    <zhuanchePrePay>false</zhuanchePrePay>
+    <paotuiPrePay>false</paotuiPrePay>
+    <smsMainCompany>false</smsMainCompany>
+    <autoPaidanZhuanche>false</autoPaidanZhuanche>
+    <allowRushOrderZhuanche>true</allowRushOrderZhuanche>
+    <allowRushOrderZhuanxian>false</allowRushOrderZhuanxian>
+    <allowRushOrderErrand>false</allowRushOrderErrand>
+    <allowRushOrderFreight>false</allowRushOrderFreight>
+    <filterStr></filterStr>
+    <bookTimeZhuan>0</bookTimeZhuan>
+    <zhuanYuyueMax>0</zhuanYuyueMax>
+    <zhuanYuyueTime>0</zhuanYuyueTime>
+    <isErrandOrderPool>true</isErrandOrderPool>
+    <sjurl>http://app.daijia.wang/apps/sj/szyoujia.html</sjurl>
+    <khurl>http://app.daijia.wang/apps/kh/szyoujia.html</khurl>
+</setting>
