@@ -19,7 +19,7 @@
 		<mybatis.spring.version>1.2.3</mybatis.spring.version>
 		<slf4j-api.version>1.7.7</slf4j-api.version>
 		<commons-lang3.version>3.3.2</commons-lang3.version>
-		<fasterxml.version>2.4.2</fasterxml.version>
+		<fasterxml.version>2.12.7.1</fasterxml.version>
 	</properties>
 	<dependencies>
 	<dependency>
